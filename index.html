@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCWRA Buddy — Your Support Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-6 px-4 shadow-lg">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">LCWRA Buddy</h1>
+            <p class="text-blue-100 text-lg">Built by a claimant, for claimants</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
+        <!-- Section 1: DRO Checklist -->
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">📋 DRO Checklist</h2>
+            <p class="text-gray-600 mb-6 text-lg">Follow these steps to prepare for your Debt Relief Order</p>
+            
+            <div class="space-y-3">
+                <!-- Step 1 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(1)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 1: Contact StepChange</span>
+                        <span id="icon-1" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-1" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Email StepChange with your LCWRA award letter as proof of benefits.</p>
+                        <p class="text-gray-600">📧 Use their online form or email your advisor directly with "LCWRA DRO Application" in the subject line.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(2)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 2: Gather Bank Statements</span>
+                        <span id="icon-2" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-2" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Download 3 months of bank statements (PDF format is best).</p>
+                        <p class="text-gray-600">💡 Most banks let you download these from your app or online banking.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(3)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 3: List All Debts</span>
+                        <span id="icon-3" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-3" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Make a list: Creditor name, account number, amount owed.</p>
+                        <p class="text-gray-600">📝 Include credit cards, loans, overdrafts, utility arrears. Don't include rent/mortgage.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(4)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 4: Calculate Monthly Income</span>
+                        <span id="icon-4" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-4" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Add up all benefits: UC, PIP, LCWRA element, etc.</p>
+                        <p class="text-gray-600">💰 Your total must be under £75/month disposable income (after essentials) to qualify.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(5)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 5: Check Asset Value</span>
+                        <span id="icon-5" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-5" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Total value of possessions must be under £2,000.</p>
+                        <p class="text-gray-600">🚗 Exclude: Essential furniture, clothes, tools for work. Include: Car value (unless Motability), savings.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(6)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 6: Complete DRO Form</span>
+                        <span id="icon-6" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-6" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">StepChange will send you the form. Fill it carefully and honestly.</p>
+                        <p class="text-gray-600">✅ Double-check all figures. Missing info delays the process.</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden">
+                    <button onclick="toggleStep(7)" class="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 transition flex justify-between items-center">
+                        <span class="font-semibold text-lg text-blue-900">Day 7: Submit & Wait</span>
+                        <span id="icon-7" class="text-blue-600 text-xl">+</span>
+                    </button>
+                    <div id="step-7" class="hidden p-4 bg-white border-t border-blue-200">
+                        <p class="text-gray-700 text-lg mb-2">Send everything to StepChange. They'll apply on your behalf (£90 fee usually waived for LCWRA).</p>
+                        <p class="text-gray-600">⏳ Processing takes 4-6 weeks. Creditors must stop contact once applied.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: GP Email Generator -->
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">✉️ GP Email Generator</h2>
+            <p class="text-gray-600 mb-6 text-lg">Generate a ready-to-send foodbank voucher request</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="userName" class="block text-lg font-semibold text-gray-700 mb-2">Your Name:</label>
+                    <input type="text" id="userName" placeholder="e.g., Sarah Jones" 
+                           class="w-full p-3 text-lg border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                
+                <button onclick="generateEmail()" 
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition">
+                    Generate Foodbank Email
+                </button>
+
+                <div id="emailOutput" class="hidden">
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
+                        <p class="font-semibold text-blue-900 mb-2 text-lg">Copy this email:</p>
+                        <div id="emailContent" class="bg-white p-4 rounded border border-blue-200 font-mono text-sm whitespace-pre-wrap"></div>
+                        <button onclick="copyEmail()" 
+                                class="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                            📋 Copy to Clipboard
+                        </button>
+                        <span id="copyConfirm" class="ml-3 text-green-600 font-semibold hidden">✓ Copied!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Waiver Tracker -->
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">🎟️ Waiver Tracker</h2>
+            <p class="text-gray-600 mb-6 text-lg">Apply for discounts and exemptions you're entitled to</p>
+            
+            <div class="space-y-6">
+                <!-- Council Tax Waiver -->
+                <div class="border-2 border-blue-300 rounded-lg p-5 bg-blue-50">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">🏠 Council Tax Reduction</h3>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">What to say:</p>
+                        <p class="text-gray-700">"I'm on Universal Credit with the LCWRA element. I'd like to apply for Council Tax Support."</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">Proof needed:</p>
+                        <p class="text-gray-700">UC award letter showing LCWRA element, or recent UC statement.</p>
+                    </div>
+                    
+                    <button onclick="showWaiverEmail('councilTax')" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                        Show Email Template
+                    </button>
+                    
+                    <div id="councilTax" class="hidden mt-4 bg-white p-4 rounded border border-blue-300">
+                        <p class="font-semibold mb-2">Copy this:</p>
+                        <pre class="text-sm whitespace-pre-wrap font-mono bg-gray-50 p-3 rounded">Subject: Council Tax Support Application - LCWRA Claimant
+
+Dear Council Tax Team,
+
+I am writing to apply for Council Tax Support. I receive Universal Credit with the Limited Capability for Work and Work-Related Activity (LCWRA) element.
+
+Please find attached my UC award letter as proof of entitlement.
+
+I would be grateful if you could process this application and confirm the reduction amount.
+
+Thank you for your assistance.
+
+Yours sincerely,
+[Your Name]</pre>
+                        <button onclick="copyWaiverEmail('councilTax')" 
+                                class="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                            📋 Copy Email
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TV License Waiver -->
+                <div class="border-2 border-blue-300 rounded-lg p-5 bg-blue-50">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">📺 TV License Exemption</h3>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">What to say:</p>
+                        <p class="text-gray-700">"I'm registered blind / severely sight impaired. I qualify for a 50% discount."</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">Proof needed:</p>
+                        <p class="text-gray-700">BD8 certificate or letter from your ophthalmologist confirming registration.</p>
+                    </div>
+                    
+                    <button onclick="showWaiverEmail('tvLicense')" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                        Show Email Template
+                    </button>
+                    
+                    <div id="tvLicense" class="hidden mt-4 bg-white p-4 rounded border border-blue-300">
+                        <p class="font-semibold mb-2">Copy this:</p>
+                        <pre class="text-sm whitespace-pre-wrap font-mono bg-gray-50 p-3 rounded">Subject: TV License Blind Concession Application
+
+Dear TV Licensing,
+
+I am writing to apply for the 50% blind concession on my TV license.
+
+I am registered as severely sight impaired (blind) and have enclosed my BD8 certificate as proof.
+
+My current license number is: [Your License Number]
+
+Please confirm receipt and apply the discount to my account.
+
+Thank you.
+
+Yours sincerely,
+[Your Name]
+[Your Address]</pre>
+                        <button onclick="copyWaiverEmail('tvLicense')" 
+                                class="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                            📋 Copy Email
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bus Pass Waiver -->
+                <div class="border-2 border-blue-300 rounded-lg p-5 bg-blue-50">
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">🚌 Disabled Bus Pass</h3>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">What to say:</p>
+                        <p class="text-gray-700">"I receive PIP with mobility component. I'd like to apply for a disabled person's bus pass."</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="font-semibold text-gray-800 mb-1 text-lg">Proof needed:</p>
+                        <p class="text-gray-700">PIP award letter showing mobility component (standard or enhanced).</p>
+                    </div>
+                    
+                    <button onclick="showWaiverEmail('busPass')" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                        Show Email Template
+                    </button>
+                    
+                    <div id="busPass" class="hidden mt-4 bg-white p-4 rounded border border-blue-300">
+                        <p class="font-semibold mb-2">Copy this:</p>
+                        <pre class="text-sm whitespace-pre-wrap font-mono bg-gray-50 p-3 rounded">Subject: Disabled Person's Bus Pass Application
+
+Dear Transport Team,
+
+I am writing to apply for a disabled person's bus pass.
+
+I receive Personal Independence Payment (PIP) with the mobility component. Please find attached my PIP award letter as evidence.
+
+I would appreciate guidance on the application process and any forms I need to complete.
+
+Thank you for your help.
+
+Yours sincerely,
+[Your Name]
+[Your Address]
+[Date of Birth]</pre>
+                        <button onclick="copyWaiverEmail('busPass')" 
+                                class="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
+                            📋 Copy Email
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-6 px-4 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-lg font-semibold mb-2">£4.99 on Gumroad</p>
+            <p class="text-blue-100 text-lg">Made with anxiety ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle DRO Checklist Steps
+        function toggleStep(stepNum) {
+            const step = document.getElementById(`step-${stepNum}`);
+            const icon = document.getElementById(`icon-${stepNum}`);
+            
+            if (step.classList.contains('hidden')) {
+                step.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                step.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // Generate GP Email
+        function generateEmail() {
+            const name = document.getElementById('userName').value.trim();
+            
+            if (!name) {
+                alert('Please enter your name first!');
+                return;
+            }
+
+            const subject = 'LCWRA - Foodbank Voucher Request';
+            const body = `Dear Practice Manager,
+
+I am a patient at your surgery and I am writing to request a foodbank voucher.
+
+I receive Universal Credit with the Limited Capability for Work and Work-Related Activity (LCWRA) element due to my health conditions, and I am currently experiencing financial hardship.
+
+I understand that GP surgeries can issue foodbank referral vouchers for patients in need. I would be very grateful if you could provide me with a voucher for my local foodbank.
+
+Please let me know if you require any additional information.
+
+Thank you for your understanding and support.
+
+Yours sincerely,
+${name}`;
+
+            const fullEmail = `Subject: ${subject}\n\n${body}`;
+            
+            document.getElementById('emailContent').textContent = fullEmail;
+            document.getElementById('emailOutput').classList.remove('hidden');
+            document.getElementById('copyConfirm').classList.add('hidden');
+        }
+
+        // Copy Email to Clipboard
+        function copyEmail() {
+            const emailText = document.getElementById('emailContent').textContent;
+            navigator.clipboard.writeText(emailText).then(() => {
+                const confirm = document.getElementById('copyConfirm');
+                confirm.classList.remove('hidden');
+                setTimeout(() => confirm.classList.add('hidden'), 3000);
+            });
+        }
+
+        // Show Waiver Email Template
+        function showWaiverEmail(id) {
+            const element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+
+        // Copy Waiver Email to Clipboard
+        function copyWaiverEmail(id) {
+            const element = document.getElementById(id);
+            const emailText = element.querySelector('pre').textContent;
+            navigator.clipboard.writeText(emailText).then(() => {
+                alert('Email copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
